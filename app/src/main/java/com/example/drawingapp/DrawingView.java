@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -88,5 +89,23 @@ public class DrawingView extends View {
         invalidate();
         paintColor = Color.parseColor(color);
         drawPaint.setColor(paintColor);
+    }
+
+    public void setRoundStroke() {
+        drawPaint.setStrokeJoin(Paint.Join.ROUND);
+        drawPaint.setStrokeCap(Paint.Cap.ROUND);
+        invalidate();
+    }
+
+    public void setSquareStroke() {
+        drawPaint.setStrokeJoin(Paint.Join.MITER);
+        drawPaint.setStrokeCap(Paint.Cap.SQUARE);
+        invalidate();
+    }
+
+    // Start new Drawing
+    public void clear() {
+        drawCanvas.drawColor(0, PorterDuff.Mode.CLEAR);
+        invalidate();
     }
 }
