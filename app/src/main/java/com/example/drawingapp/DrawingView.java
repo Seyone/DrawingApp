@@ -3,6 +3,7 @@ package com.example.drawingapp;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.util.AttributeSet;
@@ -81,5 +82,11 @@ public class DrawingView extends View {
 
         invalidate();
         return true;
+    }
+
+    public void setColor (String color) {
+        invalidate();
+        paintColor = Color.parseColor(color);
+        drawPaint.setColor(paintColor);
     }
 }
